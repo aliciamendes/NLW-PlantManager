@@ -1,24 +1,17 @@
 import React from "react";
-import { useState } from "react";
 import {
-  View,
   Text,
   StyleSheet,
   Image,
   StatusBar,
   SafeAreaView,
+  TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import wateringImg from "../assets/watering.png";
 import colors from "../styles/colors";
-import Button from "./components/Button";
 
 export function Welcome() {
-  const [visible, setVisible] = useState(false);
-
-  function handleVisibility() {
-    setVisible(true);
-  }
-
   return (
     <SafeAreaView style={style.container}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
@@ -33,7 +26,9 @@ export function Welcome() {
       <Text style={style.text}>
         Não esqueca mais de regar suas plantas. Nós cuidamos de lembrar você!
       </Text>
-      <Button title=">" onPress={handleVisibility} />
+      <TouchableOpacity style={style.button} activeOpacity={0.6}>
+        <Text style={style.buttonTxt}>{">"}</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -51,13 +46,25 @@ const style = StyleSheet.create({
     marginTop: 40,
   },
   image: {
-    width: 290,
-    height: 285,
+    height: Dimensions.get("window").width * 0.7,
   },
   text: {
     textAlign: "center",
     fontSize: 18,
     paddingHorizontal: 15,
     color: colors.heading,
+  },
+  button: {
+    backgroundColor: colors.green,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    marginBottom: 20,
+    height: 55,
+    paddingHorizontal: 20,
+  },
+  buttonTxt: {
+    fontSize: 25,
+    color: colors.white,
   },
 });

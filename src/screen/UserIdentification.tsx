@@ -11,16 +11,21 @@ import {
   Keyboard,
   StatusBar,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import { Button } from "../components/Button";
+import { useNavigation } from "@react-navigation/core";
 
 export function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [nameUser, setNameUser] = useState<String>();
 
+  const navigation = useNavigation();
+
+  function handleWithSubmit() {
+    navigation.navigate("Confirmation");
+  }
   function handleWithInputBlur() {
     setIsFocused(false);
     setIsFilled(!!nameUser);
@@ -65,7 +70,7 @@ export function UserIdentification() {
               />
 
               <View style={style.footer}>
-                <Button />
+                <Button title="Confirmar" onPress={handleWithSubmit} />
               </View>
             </View>
           </View>

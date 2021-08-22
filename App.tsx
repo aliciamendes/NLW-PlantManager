@@ -1,8 +1,20 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Welcome } from "./src/screen/Welcome";
+import AppLoading from "expo-app-loading";
+import Routes from "./src/routes/index";
+import {
+  useFonts,
+  Jost_400Regular,
+  Jost_600SemiBold,
+} from "@expo-google-fonts/jost";
 
 export default function App() {
-  return <Welcome />;
+  const [fontsLoaded] = useFonts({
+    Jost_600SemiBold,
+    Jost_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+  return <Routes />;
 }

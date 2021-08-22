@@ -9,6 +9,7 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  StatusBar,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import colors from "../styles/colors";
@@ -37,6 +38,7 @@ export function UserIdentification() {
   }
   return (
     <SafeAreaView style={style.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       <KeyboardAvoidingView
         style={style.container}
         behavior={Platform.OS === "ios" ? "padding" : "height"}

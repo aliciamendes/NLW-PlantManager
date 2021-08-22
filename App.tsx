@@ -1,5 +1,5 @@
 import React from "react";
-import { UserIdentification } from "./src/screen/UserIdentification";
+import { Confirmation } from "./src/screen/Confirmation";
 import {
   useFonts,
   Jost_400Regular,
@@ -17,5 +17,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <UserIdentification />;
+  return <Confirmation />;
 }

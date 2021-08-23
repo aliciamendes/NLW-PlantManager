@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Welcome } from "../screen/Welcome";
 import { UserIdentification } from "../screen/UserIdentification";
 import { Confirmation } from "../screen/Confirmation";
+import PlantSelect from "../screen/PlantSelect";
 
 const stackRoutes = createStackNavigator();
 
@@ -16,14 +17,22 @@ const AppRoutes: React.FC = () => (
       },
     }}
   >
-    <stackRoutes.Screen name="Welcome" component={Welcome} />
+    <stackRoutes.Screen 
+      name="Welcome" 
+      component={Welcome} />
 
     <stackRoutes.Screen
       name="UserIdentification"
-      component={UserIdentification}
-    />
+      component={UserIdentification} />
 
-    <stackRoutes.Screen name="Confirmation" component={Confirmation} />
+    <stackRoutes.Screen 
+      name="Confirmation" 
+      component={Confirmation} />
+
+    <stackRoutes.Screen 
+      name="PlantSelect" 
+      component={PlantSelect} />
+
   </stackRoutes.Navigator>
 );
 

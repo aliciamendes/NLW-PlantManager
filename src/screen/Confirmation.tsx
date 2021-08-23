@@ -18,8 +18,8 @@ import { useNavigation } from "@react-navigation/core";
 export function Confirmation() {
   const navigation = useNavigation();
 
-  function handleWithStart() {
-    navigation.navigate("");
+  function handleWithMoveOn() {
+    navigation.navigate("PlantSelect");
   }
   function handleWithFeedback() {
     Keyboard.dismiss();
@@ -39,7 +39,7 @@ export function Confirmation() {
               Vamos começar a cuidar das suas plantinhas com muito cuidado
             </Text>
             <View style={style.footer}>
-              <Button title="Começar" onPress={handleWithStart} />
+              <Button title="Começar" onPress={handleWithMoveOn} />
             </View>
           </View>
         </TouchableWithoutFeedback>

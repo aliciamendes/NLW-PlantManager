@@ -90,7 +90,7 @@
       "about": "Exigem algumas horinhas de sol por dia, por isso deixe próximo a janelas.",
       "water_tips": "Regue sempre na terra e não as folhas. Regue 3 vezes na semana",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/7.svg",
-      "environments": ["kitchen", "living_room"],
+      "environments": ["kitchen", "living_room", "bathroom"],
       "frequency": {
         "times": 3,
         "repeat_every": "week"

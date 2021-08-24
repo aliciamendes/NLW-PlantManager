@@ -14,14 +14,14 @@ interface EnvironmentProps {
   title: string;
 }
 interface PlantsProps {
-  key: string;
-  title: string;
+  id: string;
+  name: string;
   about: string;
   water_tips: string;
   photo: string;
   environments: [string];
   frequency: {
-    times: string;
+    times: number;
     repeat_every: string;
   };
 }
@@ -35,31 +35,34 @@ export default function PlantSelect() {
 
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
-  const [loadAll, setLoadAll] = useState(false);
 
   function handleWithEnvironmentSelected(environment: string) {
     setEnvironmentSelected(environment);
-    if (environment === "all") {
-      return setFilteredPlants(plants);
-    }
+
+    if (environment == "all") return setFilteredPlants(plants);
+
     const filtered = plants.filter((plant) =>
       plant.environments.includes(environment)
     );
+
     setFilteredPlants(filtered);
   }
 
   async function fetchPlants() {
     const { data } = await api.get(
-      `/plants?_sort=name&_order=asc&_page=${page}&_limit=8`
+      `plants?_sort=name&_order=asc&_page=${page}&_limit=6`
     );
+
     if (!data) return setLoading(true);
 
     if (page > 1) {
       setPlants((oldValue) => [...oldValue, ...data]);
+      setFilteredPlants((oldValue) => [...oldValue, ...data]);
     } else {
       setPlants(data);
       setFilteredPlants(data);
     }
+
     setLoading(false);
     setLoadMore(false);
   }
@@ -125,15 +128,16 @@ export default function PlantSelect() {
       <View style={styles.plants}>
         <FlatList
           data={filteredPlants}
+          keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => <PlantCardPrimary data={item} />}
-          numColumns={2}
           showsVerticalScrollIndicator={false}
           onEndReachedThreshold={0.1}
+          numColumns={2}
           onEndReached={({ distanceFromEnd }) =>
             handleWithFetchMore(distanceFromEnd)
           }
           ListFooterComponent={
-            loadMore ? <ActivityIndicator color={colors.green_dark} /> : <></>
+            loadMore ? <ActivityIndicator color={colors.green} /> : <></>
           }
         />
       </View>
@@ -170,6 +174,7 @@ const styles = StyleSheet.create({
     marginVertical: 32,
   },
   plants: {
+    flex: 1,
     paddingHorizontal: 25,
     justifyContent: "center",
   },

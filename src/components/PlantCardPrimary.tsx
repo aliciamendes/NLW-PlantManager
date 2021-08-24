@@ -26,15 +26,14 @@ const styles = StyleSheet.create({
     flex: 1,
     maxWidth: "45%",
     backgroundColor: colors.shape,
-    borderRadius: 20,
-    paddingVertical: 10,
+    borderRadius: 30,
+    paddingVertical: 15,
     alignItems: "center",
     margin: 10,
   },
-
   text: {
     color: colors.green_dark,
     fontFamily: fonts.heading,
-    marginVertical: 16,
+    marginVertical: 18,
   },
 });

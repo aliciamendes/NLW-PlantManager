@@ -10,7 +10,6 @@ const stackRoutes = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
   <stackRoutes.Navigator
-    initialRouteName="PlantSelect"
     screenOptions={{
       headerShown: false,
       cardStyle: {

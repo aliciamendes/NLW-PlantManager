@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { EnvironmentButton } from "../components/EnvironmentButton";
 import { Header } from "../components/Header";
+import { Load } from "../components/Load";
 import { PlantCardPrimary } from "../components/PlantCardPrimary";
 import api from "../services/api";
 import colors from "../styles/colors";
@@ -31,6 +32,7 @@ export default function PlantSelect() {
   const [plants, setPlants] = useState<PlantsProps[]>([]);
   const [filteredPlants, setFilteredPlants] = useState<PlantsProps[]>([]);
   const [environmentSelected, setEnvironmentSelected] = useState("all");
+  const [loading, setLoading] = useState(true);
 
   function handleWithEnvironmentSelected(environment: string) {
     setEnvironmentSelected(environment);
@@ -61,12 +63,18 @@ export default function PlantSelect() {
   }, []);
 
   useEffect(() => {
-    async function fetchEnviroment() {
+    async function fetchPlants() {
       const { data } = await api.get("/plants?_sort=name&_order=asc");
       setPlants(data);
+      setFilteredPlants(data);
+      setLoading(false);
     }
-    fetchEnviroment();
+    fetchPlants();
   }, []);
+
+  if (loading) {
+    return <Load />;
+  }
 
   return (
     <View style={styles.container}>

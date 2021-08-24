@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
-import {} from "react-native-iphone-x-helper";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
@@ -10,7 +9,7 @@ interface EnvironmentButtonProps extends RectButtonProps {
   active?: boolean;
 }
 
-export default function EnviromentButton({
+export function EnvironmentButton({
   title,
   active = false,
   ...rest
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-    marginRight: 5,
+    marginHorizontal: 5,
   },
   containerActive: {
     backgroundColor: colors.green_light,

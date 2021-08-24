@@ -10,6 +10,7 @@ const stackRoutes = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
   <stackRoutes.Navigator
+    initialRouteName="PlantSelect"
     screenOptions={{
       headerShown: false,
       cardStyle: {
@@ -17,22 +18,16 @@ const AppRoutes: React.FC = () => (
       },
     }}
   >
-    <stackRoutes.Screen 
-      name="Welcome" 
-      component={Welcome} />
+    <stackRoutes.Screen name="Welcome" component={Welcome} />
 
     <stackRoutes.Screen
       name="UserIdentification"
-      component={UserIdentification} />
+      component={UserIdentification}
+    />
 
-    <stackRoutes.Screen 
-      name="Confirmation" 
-      component={Confirmation} />
+    <stackRoutes.Screen name="Confirmation" component={Confirmation} />
 
-    <stackRoutes.Screen 
-      name="PlantSelect" 
-      component={PlantSelect} />
-
+    <stackRoutes.Screen name="PlantSelect" component={PlantSelect} />
   </stackRoutes.Navigator>
 );
 
